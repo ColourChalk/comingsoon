@@ -1,65 +1,361 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colour Chalk</title>
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            overflow: hidden; /* Prevent scrolling */
-        }
-        body {
-            background: url('bg.png') no-repeat center center;
-            background-size: cover; /* Ensure the image covers the entire screen */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
-        }
-        .content {
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.5); /* Make text readable over background */
-            border-radius: 10px;
-            max-width: 90%; /* Ensure the content doesn't overflow on smaller screens */
-        }
-        h1 {
-            font-size: 2.5em;
-            margin: 0;
-        }
-        p {
-            font-size: 1.2em;
-            margin: 0;
-        }
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 1.5em;
-            }
-            p {
-                font-size: 1em;
-            }
-        }
-        @media (max-height: 400px) {
-            .content {
-                padding: 10px;
-            }
-            h1 {
-                font-size: 1.5em;
-            }
-            p {
-                font-size: 1em;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="content">
-        <!-- <h1>Welcome to Colour Chalk</h1>
-        <p>This is a mobile-responsive landing page with a background image.</p> -->
+<html>
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=SignPainter&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/main.css" rel="stylesheet" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div
+      style="
+        background: rgba(0, 0, 0, 1);
+        opacity: 1;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      "
+    >
+      <section class="container-section">
+        <header class="header-section">
+          <img
+            style="width: 15%; height: auto; display: inline-block"
+            src="./images/chalk.png"
+          />
+          <div style="align-self: center">
+            <p
+              style="
+                color: rgba(255, 255, 255, 1);
+                font-family: SignPainter;
+                font-weight: HouseScript Semibold;
+                font-size: 48px;
+                opacity: 1;
+                margin-bottom: 0;
+              "
+            >
+              COLOUR CHALK
+            </p>
+            <p
+              style="
+                color: rgba(206, 236, 151, 1);
+                font-family: SignPainter;
+                font-weight: HouseScript;
+                font-size: 28px;
+                opacity: 1;
+                margin-top: 0;
+              "
+            >
+              where every story begins with you
+            </p>
+          </div>
+        </header>
+
+        <section class="middle-section">
+          <section>
+            <p
+              style="
+                color: rgba(255, 255, 255, 1);
+                font-family: SignPainter;
+                font-weight: HouseScript Semibold;
+                font-size: 24px;
+                opacity: 1;
+                margin-bottom: 0;
+              "
+            >
+              Personalised products that adds a
+              <span
+                style="
+                  color: rgba(206, 236, 151, 1);
+                  font-family: SignPainter;
+                  font-weight: HouseScript;
+                  font-size: 24px;
+                  opacity: 1;
+                "
+                >joyful touch</span
+              >
+            </p>
+            <p
+              style="
+                color: rgba(206, 236, 151, 1);
+                font-family: 'Roboto';
+                font-weight: HouseScript;
+                font-size: 62px;
+                opacity: 1;
+                margin: 0;
+                font-weight: 100;
+              "
+            >
+              COMING SOON
+            </p>
+          </section>
+
+          <div class="container" style="width: 32%">
+            <p
+              style="
+                color: rgba(206, 236, 151, 1);
+                font-family: Roboto;
+                font-weight: Regular;
+                font-size: 28px;
+                opacity: 1;
+                text-align: center;
+                margin-bottom: 20px;
+              "
+            >
+              ARE YOU READY ?
+            </p>
+
+            <form id="emailForm">
+              <div class="email-input-container">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                />
+                <button class="notify-me" type="submit">Notify Me</button>
+              </div>
+              <span id="error-message"></span>
+            </form>
+          </div>
+        </section>
+
+        <!-- <div id="questionnaireModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Questionnaire</h2>
+            <form id="questionnaireForm">
+              <label for="q1">Question 1:</label>
+              <input type="text" id="q1" name="q1" required />
+
+              <label for="q2">Question 2:</label>
+              <input type="text" id="q2" name="q2" required />
+
+              <label for="q3">Question 3:</label>
+              <input type="text" id="q3" name="q3" required />
+
+              <button class="modal-submit" type="submit">Submit</button>
+            </form>
+          </div>
+        </div> -->
+        <button id="navigateButton" class="arrow-button">&#8595;</button>
+      </section>
+
+      <div id="questionnaire" class="questionnaire">
+        <!-- <h2 style="color: white">Questionnaire</h2> -->
+        <form class="form-container">
+          <fieldset>
+            <legend>
+              How interested are you in purchasing a personalized
+              book/notecards?
+            </legend>
+            <label>
+              <input
+                type="radio"
+                name="single-choice"
+                value="option1"
+                required
+              />
+              Very interested
+            </label>
+            <label>
+              <input type="radio" name="single-choice" value="option2" />
+              Somewhat interested
+            </label>
+            <label>
+              <input type="radio" name="single-choice" value="option3" />
+              Neutral
+            </label>
+
+            <label>
+              <input type="radio" name="single-choice" value="option4" />
+              Not very interested
+            </label>
+
+            <label>
+              <input type="radio" name="single-choice" value="option4" />
+              Not interested at all
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>
+              Which elements of a personalized children's book do you find most
+              appealing?
+            </legend>
+            <label>
+              <input type="checkbox" name="multi-select" value="option1" />
+              The Child's name incorporated into the story
+            </label>
+            <label>
+              <input type="checkbox" name="multi-select" value="option2" />
+              Personalized illustrations featuring the child
+            </label>
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Educational content tailored to the child's learning level
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Custom storylines based on the child's interests
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Interactive elements (e.g., activities, puzzles)
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>
+              What themes or topics would you be most interested in for a
+              personalized children's book?
+            </legend>
+            <label>
+              <input type="checkbox" name="multi-select" value="option1" />
+              Adventure
+            </label>
+            <label>
+              <input type="checkbox" name="multi-select" value="option2" />
+              Fantasy/Fairy tales
+            </label>
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Learning/Educational
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Family and friendship
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Sports
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Animals
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Superheroes
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <legend>
+              What factors would influence your decision to purchase a
+              personalized/customized book?
+            </legend>
+            <label>
+              <input type="checkbox" name="multi-select" value="option1" />
+              Price
+            </label>
+            <label>
+              <input type="checkbox" name="multi-select" value="option2" />
+              Customization options available
+            </label>
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Quality of the book
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Delivery time
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Customer reviews
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Ease of ordering
+            </label>
+
+            <!-- <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Superheroes
+            </label> -->
+          </fieldset>
+
+          <fieldset>
+            <legend>
+              What occasions would you purchase personalized/customized
+              children's notecards for?
+            </legend>
+            <label>
+              <input type="checkbox" name="multi-select" value="option1" />
+              Birthday parties
+            </label>
+            <label>
+              <input type="checkbox" name="multi-select" value="option2" />
+              Thank you notes
+            </label>
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Holiday cards
+            </label>
+
+            <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              School events
+            </label>
+
+            <!-- <label>
+              <input type="checkbox" name="multi-select" value="option3" />
+              Superheroes
+            </label> -->
+          </fieldset>
+
+          <fieldset>
+            <legend>
+              How interested are you in purchasing a personalized
+              book/notecards?
+            </legend>
+            <label>
+              <input
+                type="radio"
+                name="single-choice"
+                value="option1"
+                required
+              />
+              Very likely
+            </label>
+            <label>
+              <input type="radio" name="single-choice" value="option2" />
+              Likely
+            </label>
+            <label>
+              <input type="radio" name="single-choice" value="option3" />
+              Neutral
+            </label>
+
+            <label>
+              <input type="radio" name="single-choice" value="option4" />
+              Unlikely
+            </label>
+
+            <label>
+              <input type="radio" name="single-choice" value="option4" />
+              Very unlikely
+            </label>
+          </fieldset>
+        </form>
+      </div>
     </div>
-</body>
+    <script src="./script/scripts.js"></script>
+  </body>
 </html>
