@@ -302,6 +302,12 @@ input[type="text"] {
   border-radius: 4px;
 }
 
+.logo-img {
+  width: 15%;
+  height: auto;
+  display: inline-block;
+}
+
 .modal-submit[type="submit"] {
   padding: 10px;
   color: black;
@@ -326,10 +332,13 @@ input[type="text"] {
 
 .middle-section {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
-  row-gap: 30px;
+  /* row-gap: 30px;
+   
+  */
+  flex: 1;
 }
 
 .footer-section {
@@ -341,9 +350,9 @@ input[type="text"] {
 }
 
 @media (max-width: 1080px) {
-  .middle-section {
+  /* .middle-section {
     flex: 1 !important;
-  }
+  } */
 }
 
 .arrow-button {
@@ -403,21 +412,26 @@ fieldset {
   background-color: #222; /* Dark background for fieldsets */
 }
 
+/* Adjusted legend styling for better readability */
 legend {
   font-weight: bold;
+  font-size: 2rem; /* Increased font size */
+  margin-bottom: 10px; /* Space below the legend */
 }
 
 /* Radio and Checkbox styling */
 label {
   display: block;
   margin: 10px 0;
-  font-size: 1rem;
+  font-size: 1.5rem; /* Increased font size */
   color: white;
 }
 
 input[type="radio"],
 input[type="checkbox"] {
   margin-right: 10px;
+  width: 20px; /* Increased size for easier clicking */
+  height: 20px; /* Increased size for easier clicking */
 }
 
 /* Button styling */
@@ -425,14 +439,102 @@ button {
   background-color: rgba(206, 236, 151, 1);
   color: black;
   border: none;
-  padding: 10px 20px;
+  padding: 15px 30px; /* Increased padding for better touch targets */
   border-radius: 5px;
   cursor: pointer;
+  font-size: 1.5rem; /* Increased font size */
   transition: background-color 0.3s ease;
 }
 
-/* Responsive styles */
-@media (max-width: 600px) {
+button:hover {
+  background-color: #b3c12c; /* Slightly darker shade for hover */
+}
+
+.header-section-title {
+  color: rgba(255, 255, 255, 1);
+  font-family: SignPainter;
+  font-weight: HouseScript Semibold;
+  font-size: 48px;
+  opacity: 1;
+  margin-bottom: 0;
+}
+
+.middle-section-title {
+  color: rgba(255, 255, 255, 1);
+  font-family: SignPainter;
+  font-weight: HouseScript Semibold;
+  font-size: 24px;
+  opacity: 1;
+  margin-bottom: 0;
+}
+
+.header-section-subtitle {
+  color: rgba(206, 236, 151, 1);
+  font-family: SignPainter;
+  font-weight: HouseScript;
+  font-size: 28px;
+  opacity: 1;
+  margin-top: 0;
+}
+
+.middle-section-joyous {
+  color: rgba(206, 236, 151, 1);
+  font-family: SignPainter;
+  font-weight: HouseScript;
+  font-size: 24px;
+  opacity: 1;
+}
+
+.comming-soon {
+  color: rgba(206, 236, 151, 1);
+  font-family: "Roboto";
+  font-weight: HouseScript;
+  font-size: 62px;
+  opacity: 1;
+  margin: 0;
+  font-weight: 100;
+  text-align: center;
+}
+
+.ready {
+  color: rgba(206, 236, 151, 1);
+  font-family: Roboto;
+  font-weight: Regular;
+  font-size: 28px;
+  opacity: 1;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 980px) {
+  .notify-me {
+    font-size: 28px;
+    font-family: 600;
+  }
+  .email-input::placeholder {
+    font-size: 2rem;
+  }
+  .ready {
+    font-size: 72px;
+  }
+  .middle-section-joyous {
+    font-size: 46px;
+  }
+  .middle-section-title {
+    font-size: 46px;
+  }
+  .header-section-subtitle {
+    font-size: 38px;
+  }
+  .logo-img {
+    width: 28%;
+  }
+
+  .header-section-title {
+    font-size: 48px;
+  }
+
+  .content,
   .questionnaire {
     padding: 10px;
   }
@@ -441,8 +543,36 @@ button {
     width: calc(100% - 20px); /* Adjust width for small screens */
   }
 
+  legend {
+    font-size: 1.75rem; /* Adjust font size for mobile */
+    font-weight: 700; /* Ensure bold text for better readability */
+  }
+
+  label {
+    font-size: 1.25rem; /* Adjust font size for mobile */
+    font-weight: 600; /* Ensure semi-bold text for better readability */
+  }
+
+  input[type="radio"],
+  input[type="checkbox"] {
+    width: 25px; /* Further increased size for mobile */
+    height: 25px; /* Further increased size for mobile */
+  }
+
+  input[type="email"] {
+    width: auto; /* Further increased size for mobile */
+    height: 72px; /* Further increased size for mobile */
+  }
+
   button {
-    width: 100%;
+    /* width: 100%; */
+    font-size: 1.25rem; /* Adjust font size for mobile */
+    padding: 20px; /* Increase padding for better touch targets */
+  }
+
+  .arrow-button {
+    bottom: 10px;
+    font-size: 1.5rem; /* Adjust font size for mobile */
   }
 }
 

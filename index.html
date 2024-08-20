@@ -2,7 +2,7 @@
 <html>
   <head>
     <link
-      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -24,33 +24,10 @@
     >
       <section class="container-section">
         <header class="header-section">
-          <img
-            style="width: 15%; height: auto; display: inline-block"
-            src="./images/chalk.png"
-          />
-          <div style="align-self: center">
-            <p
-              style="
-                color: rgba(255, 255, 255, 1);
-                font-family: SignPainter;
-                font-weight: HouseScript Semibold;
-                font-size: 48px;
-                opacity: 1;
-                margin-bottom: 0;
-              "
-            >
-              COLOUR CHALK
-            </p>
-            <p
-              style="
-                color: rgba(206, 236, 151, 1);
-                font-family: SignPainter;
-                font-weight: HouseScript;
-                font-size: 28px;
-                opacity: 1;
-                margin-top: 0;
-              "
-            >
+          <img class="logo-img" src="./images/chalk.png" />
+          <div style="align-self: center; flex: 1">
+            <p class="header-section-title">COLOUR CHALK</p>
+            <p class="header-section-subtitle">
               where every story begins with you
             </p>
           </div>
@@ -58,63 +35,22 @@
 
         <section class="middle-section">
           <section>
-            <p
-              style="
-                color: rgba(255, 255, 255, 1);
-                font-family: SignPainter;
-                font-weight: HouseScript Semibold;
-                font-size: 24px;
-                opacity: 1;
-                margin-bottom: 0;
-              "
-            >
+            <p class="middle-section-title">
               Personalised products that adds a
-              <span
-                style="
-                  color: rgba(206, 236, 151, 1);
-                  font-family: SignPainter;
-                  font-weight: HouseScript;
-                  font-size: 24px;
-                  opacity: 1;
-                "
-                >joyful touch</span
-              >
+              <span class="middle-section-joyous">joyful touch</span>
             </p>
-            <p
-              style="
-                color: rgba(206, 236, 151, 1);
-                font-family: 'Roboto';
-                font-weight: HouseScript;
-                font-size: 62px;
-                opacity: 1;
-                margin: 0;
-                font-weight: 100;
-              "
-            >
-              COMING SOON
-            </p>
+            <p class="comming-soon">COMING SOON</p>
           </section>
 
-          <div class="container" style="width: 32%">
-            <p
-              style="
-                color: rgba(206, 236, 151, 1);
-                font-family: Roboto;
-                font-weight: Regular;
-                font-size: 28px;
-                opacity: 1;
-                text-align: center;
-                margin-bottom: 20px;
-              "
-            >
-              ARE YOU READY ?
-            </p>
+          <div class="container">
+            <p class="ready">ARE YOU READY ?</p>
 
             <form id="emailForm">
               <div class="email-input-container">
                 <input
                   type="email"
                   id="email"
+                  class="email-input"
                   name="email"
                   placeholder="Enter your email"
                   required
