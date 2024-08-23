@@ -377,8 +377,8 @@ input[type="text"] {
     transform: translateX(-50%) scale(1.1);
   }
   50% {
-    bottom: 25px;
-    transform: translateX(-50%) scale(1.15);
+    bottom: 30px;
+    transform: translateX(-50%) scale(1.75);
   }
 }
 
@@ -589,7 +589,7 @@ button:hover {
 
   .arrow-button {
     bottom: 10px;
-    font-size: 1.5rem; /* Adjust font size for mobile */
+    font-size: 6.5rem; /* Adjust font size for mobile */
   }
 }
 
