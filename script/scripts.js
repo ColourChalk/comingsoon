@@ -1,32 +1,3 @@
-// var modal = document.getElementById("questionnaireModal");
-
-// var btn = document.getElementById("openQuestionnaireBtn");
-
-// // Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-
-// // When the user clicks the button, open the modal
-// btn.onclick = function () {
-//   modal.style.display = "flex";
-// };
-
-// span.onclick = function () {
-//   modal.style.display = "none";
-// };
-
-// window.onclick = function (event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// };
-
-// document
-//   .getElementById("questionnaireForm")
-//   .addEventListener("submit", function (event) {
-//     event.preventDefault();
-//     modal.style.display = "none";
-//   });
-
 document
   .getElementById("emailForm")
   .addEventListener("submit", function (event) {
@@ -58,11 +29,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function checkScroll() {
-    const page1Rect = page1.getBoundingClientRect();
-    if (page1Rect.bottom <= window.innerHeight) {
-      arrowButton.classList.add("hidden");
+    const arrowButton = document.getElementById("navigateButton");
+    var scrollPosition = window.scrollY;
+    const page1 = document.querySelector(".container-section").offsetHeight;
+
+    if (scrollPosition >= page1) {
+      arrowButton.style.opacity = "0";
     } else {
-      arrowButton.classList.remove("hidden");
+      arrowButton.style.opacity = "1";
     }
   }
 
@@ -71,5 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Check scroll position on page load and on scroll
   window.addEventListener("scroll", checkScroll);
-  window.addEventListener("load", checkScroll);
+  window.addEventListener("resize", checkScroll);
+  checkScroll();
+  // window.addEventListener("load", checkScroll);
 });
