@@ -34,9 +34,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const page1 = document.querySelector(".container-section").offsetHeight;
 
     if (scrollPosition >= page1) {
-      arrowButton.style.opacity = "0";
+      arrowButton.style.display = "none";
     } else {
-      arrowButton.style.opacity = "1";
+      arrowButton.style.display = "block";
     }
   }
 
@@ -48,4 +48,59 @@ document.addEventListener("DOMContentLoaded", function () {
   window.addEventListener("resize", checkScroll);
   checkScroll();
   // window.addEventListener("load", checkScroll);
+});
+
+const apiUrl = "https://api.colourchalk.com/api/v0/survey";
+
+const form = document.querySelector(".form-container");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  let questionSecond = form.querySelectorAll(
+    'input[name="question-2"]:checked'
+  );
+  let questionThird = form.querySelectorAll('input[name="question-3"]:checked');
+  let questionFourth = form.querySelectorAll(
+    'input[name="question-4"]:checked'
+  );
+  let questionFifth = form.querySelectorAll('input[name="question-5"]:checked');
+  questionSecond = Array.from(questionSecond)
+    .map((el) => el.value)
+    .join(",");
+  questionThird = Array.from(questionThird)
+    .map((el) => el.value)
+    .join(",");
+  questionFourth = Array.from(questionFourth)
+    .map((el) => el.value)
+    .join(",");
+  questionFifth = Array.from(questionFifth)
+    .map((el) => el.value)
+    .join(",");
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({
+      email: "goenkakavish@gmail.com",
+      responseData: {
+        question1: form["question-1"]["value"],
+        question2: questionSecond,
+        question3: questionThird,
+        question4: questionFourth,
+        question5: questionFifth,
+      },
+    }),
+  };
+
+  // Call the API using fetch
+  fetch(apiUrl, options)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((error) => {
+      console.error("There was a problem with the fetch operation:", error);
+    });
 });

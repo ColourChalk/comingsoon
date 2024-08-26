@@ -583,8 +583,8 @@ button:hover {
 
   button {
     /* width: 100%; */
-    font-size: 1.25rem; /* Adjust font size for mobile */
-    padding: 20px; /* Increase padding for better touch targets */
+    font-size: 2.25rem; /* Adjust font size for mobile */
+    padding: 20px !important; /* Increase padding for better touch targets */
   }
 
   .arrow-button {
