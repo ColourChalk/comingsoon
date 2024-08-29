@@ -57,6 +57,16 @@ const form = document.querySelector(".form-container");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  const errorMessage = document.getElementById("error-message");
+  const email = document.getElementById("email").value;
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(email)) {
+    errorMessage.textContent = "Please enter a valid email address.";
+    return;
+  } else {
+    errorMessage.textContent = "";
+  }
+
   let questionSecond = form.querySelectorAll(
     'input[name="question-2"]:checked'
   );
@@ -84,7 +94,7 @@ form.addEventListener("submit", function (event) {
     },
 
     body: JSON.stringify({
-      email: "goenkakavish@gmail.com",
+      email: email,
       responseData: {
         question1: form["question-1"]["value"],
         question2: questionSecond,
