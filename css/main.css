@@ -238,7 +238,13 @@ input[type="email"] {
 #error-message {
   color: red;
   margin-top: 10px;
-  font-size: 66px;
+  font-size: 36px;
+}
+
+#successMessage {
+  color: green;
+  margin-top: 10px;
+  font-size: 36px;
 }
 
 .open-btn {
