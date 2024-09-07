@@ -1,374 +1,772 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colour Chalk</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=SignPainter:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link
-      href="https://fonts.googleapis.com/css?family=SignPainter&display=swap"
-      rel="stylesheet"
-    />
-    <link href="./css/main.css" rel="stylesheet" />
-    <title>Document</title>
+
+    <style>
+      .hidden {
+        display: none;
+      }
+      .block {
+        display: block;
+      }
+      /* Custom text color */
+      .custom-text-color {
+        color: rgba(206, 236, 151, 1);
+      }
+
+      .sign-painter-font {
+        font-family: "SignPainter";
+      }
+
+      .custom-margin {
+        margin-left: 0.5rem;
+      }
+
+      .arrow-button {
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        background-color: rgba(206, 236, 151, 1);
+        border: none;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: bounce 1s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-15px);
+        }
+        60% {
+          transform: translateY(-10px);
+        }
+      }
+
+      .arrow-icon {
+        width: 24px;
+        height: 24px;
+        border: solid rgba(0, 0, 0, 0.7);
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        vertical-align: middle;
+      }
+
+      .personalized-product {
+        font-size: 3rem; /* Adjust font size as needed */
+        font-weight: bold;
+        color: white;
+        text-align: center;
+      }
+
+      .coming-soon {
+        font-size: 3rem; /* Adjust font size as needed */
+        font-weight: bold;
+        color: rgba(206, 236, 151, 1);
+        margin-top: 0.5rem;
+      }
+
+      .email-text {
+        font-size: 1.5rem; /* Adjust font size as needed */
+        /* font-weight: bold; */
+        color: rgba(206, 236, 151, 1);
+        text-align: center;
+        margin-top: 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .coming-soon {
+          font-size: 1.5rem; /* Adjust for smaller screens */
+        }
+        .email-text {
+          font-size: 1.25rem; /* Adjust for smaller screens */
+        }
+
+        .personalized-product {
+          font-size: 1.75rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .coming-soon {
+          font-size: 1.25rem; /* Further adjustment for very small screens */
+        }
+        .email-text {
+          font-size: 1rem; /* Further adjustment for very small screens */
+        }
+        .personalized-product {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
   </head>
-  <body>
-    <div
-      style="
-        background: rgba(0, 0, 0, 1);
-        opacity: 1;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-      "
-    >
-      <section class="container-section">
-        <header class="header-section">
-          <img class="logo-img" src="./images/chalk.png" />
-          <div style="align-self: center; flex: 1">
-            <p class="header-section-title">COLOUR CHALK</p>
-            <p class="header-section-subtitle">
-              where every story begins with you
-            </p>
-          </div>
-        </header>
-
-        <section class="middle-section">
-          <section>
-            <p class="middle-section-title">
-              Personalised products that adds a
-              <span class="middle-section-joyous">joyful touch</span>
-            </p>
-            <p class="comming-soon">COMING SOON</p>
-          </section>
-
-          <div class="container">
-            <p class="ready">ARE YOU READY ?</p>
-
-            <form id="emailForm">
-              <div class="email-input-container">
-                <input
-                  type="email"
-                  id="email"
-                  class="email-input"
-                  name="email"
-                  placeholder="Enter your email"
-                  required
-                />
-                <button class="notify-me" id="notify-me" type="submit">
-                  Notify Me
-                </button>
-              </div>
-              <p id="error-message"></p>
-              <div id="successMessage"></div>
-            </form>
-          </div>
-        </section>
-
-        <!-- <div id="questionnaireModal" class="modal">
-          <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Questionnaire</h2>
-            <form id="questionnaireForm">
-              <label for="q1">Question 1:</label>
-              <input type="text" id="q1" name="q1" required />
-
-              <label for="q2">Question 2:</label>
-              <input type="text" id="q2" name="q2" required />
-
-              <label for="q3">Question 3:</label>
-              <input type="text" id="q3" name="q3" required />
-
-              <button class="modal-submit" type="submit">Submit</button>
-            </form>
-          </div>
-        </div> -->
-        <button id="navigateButton" class="arrow-button">&#8595;</button>
-      </section>
-
-      <div id="questionnaire" class="questionnaire">
-        <!-- <h2 style="color: white">Questionnaire</h2> -->
-        <form class="form-container">
-          <fieldset>
-            <legend>
-              How interested are you in purchasing a personalized
-              book/notecards?
-            </legend>
-            <label>
-              <input type="radio" name="question-1" value="Very interested" />
-              Very interested
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="question-1"
-                value="Somewhat interested"
-              />
-              Somewhat interested
-            </label>
-            <label>
-              <input type="radio" name="question-1" value="Neutral" />
-              Neutral
-            </label>
-
-            <label>
-              <input
-                type="radio"
-                name="question-1"
-                value="Not very interested"
-              />
-              Not very interested
-            </label>
-
-            <label>
-              <input
-                type="radio"
-                name="question-1"
-                value="Not interested at all"
-              />
-              Not interested at all
-            </label>
-          </fieldset>
-
-          <fieldset>
-            <legend>
-              Which elements of a personalized children's book do you find most
-              appealing?
-            </legend>
-            <label>
-              <input
-                type="checkbox"
-                name="question-2"
-                value="The Child's name incorporated into the story"
-              />
-              The Child's name incorporated into the story
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question-2"
-                value="Personalized illustrations featuring the child"
-              />
-              Personalized illustrations featuring the child
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question-2"
-                value="Educational content tailored to the child's learning level"
-              />
-              Educational content tailored to the child's learning level
-            </label>
-
-            <label>
-              <input
-                type="checkbox"
-                name="question-2"
-                value="Custom storylines based on the child's interests"
-              />
-              Custom storylines based on the child's interests
-            </label>
-
-            <label>
-              <input
-                type="checkbox"
-                name="question-2"
-                value="Interactive elements (e.g., activities, puzzles)"
-              />
-              Interactive elements (e.g., activities, puzzles)
-            </label>
-          </fieldset>
-
-          <fieldset>
-            <legend>
-              What themes or topics would you be most interested in for a
-              personalized children's book?
-            </legend>
-            <label>
-              <input type="checkbox" name="multi-select" value="Adventure" />
-              Adventure
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question-3"
-                value="Fantasy/Fairy tales"
-              />
-              Fantasy/Fairy tales
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question-3"
-                value="Learning/Educational"
-              />
-              Learning/Educational
-            </label>
-
-            <label>
-              <input
-                type="checkbox"
-                name="question-3"
-                value="Family and friendship"
-              />
-              Family and friendship
-            </label>
-
-            <label>
-              <input type="checkbox" name="question-3" value="Sports" />
-              Sports
-            </label>
-
-            <label>
-              <input type="checkbox" name="question-3" value="Animals" />
-              Animals
-            </label>
-
-            <label>
-              <input type="checkbox" name="question-3" value="Superheroes" />
-              Superheroes
-            </label>
-          </fieldset>
-
-          <fieldset>
-            <legend>
-              What factors would influence your decision to purchase a
-              personalized/customized book?
-            </legend>
-            <label>
-              <input type="checkbox" name="question-4" value="Price" />
-              Price
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question-4"
-                value="Customization options available"
-              />
-              Customization options available
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question-4"
-                value="Quality of the book"
-              />
-              Quality of the book
-            </label>
-
-            <label>
-              <input type="checkbox" name="question-4" value="Delivery time" />
-              Delivery time
-            </label>
-
-            <label>
-              <input
-                type="checkbox"
-                name="question-4"
-                value="Customer reviews"
-              />
-              Customer reviews
-            </label>
-
-            <label>
-              <input
-                type="checkbox"
-                name="question-4"
-                value="Ease of ordering"
-              />
-              Ease of ordering
-            </label>
-
-            <!-- <label>
-              <input type="checkbox" name="multi-select" value="option3" />
-              Superheroes
-            </label> -->
-          </fieldset>
-
-          <fieldset>
-            <legend>
-              What occasions would you purchase personalized/customized
-              children's notecards for?
-            </legend>
-            <label>
-              <input
-                type="checkbox"
-                name="question-5"
-                value="Birthday parties"
-              />
-              Birthday parties
-            </label>
-            <label>
-              <input
-                type="checkbox"
-                name="question-5"
-                value="Thank you notes"
-              />
-              Thank you notes
-            </label>
-            <label>
-              <input type="checkbox" name="question-5" value="Holiday cards" />
-              Holiday cards
-            </label>
-
-            <label>
-              <input type="checkbox" name="question-5" value="School events" />
-              School events
-            </label>
-
-            <!-- <label>
-              <input type="checkbox" name="question-5" value="option3" />
-              Superheroes
-            </label> -->
-          </fieldset>
-
-          <!-- <fieldset>
-            <legend>
-              How interested are you in purchasing a personalized
-              book/notecards?
-            </legend>
-            <label>
-              <input
-                type="radio"
-                name="single-choice"
-                value="Very likely"
-                required
-              />
-              Very likely
-            </label>
-            <label>
-              <input type="radio" name="single-choice" value="Likely" />
-              Likely
-            </label>
-            <label>
-              <input type="radio" name="single-choice" value="Neutral" />
-              Neutral
-            </label>
-
-            <label>
-              <input type="radio" name="single-choice" value="Unlikely" />
-              Unlikely
-            </label>
-
-            <label>
-              <input type="radio" name="single-choice" value="Very unlikely" />
-              Very unlikely
-            </label>
-          </fieldset> -->
-
+  <body class="bg-black">
+    <nav class="bg-black p-4 flex items-center">
+      <!-- Smaller Logo at Top Left -->
+      <div class="flex-shrink-0">
+        <!-- Reduced width for the logo at different breakpoints -->
+        <img
+          src="./images/chalk.png"
+          alt="Chalk Logo"
+          class="w-24 sm:w-32 md:w-40 lg:w-48"
+        />
+      </div>
+      <!-- CHALK Text and Tagline Immediately After Logo, Centered Vertically -->
+      <div class="custom-margin">
+        <h1 class="text-xl sm:text-3xl font-bold text-white sign-painter-font">
+          COLOUR CHALK
+        </h1>
+        <p class="text-xs sm:text-md custom-text-color">
+          Where every story begins with you
+        </p>
+      </div>
+    </nav>
+    <!-- About & Email Section -->
+    <section id="emailSection" class="container mx-auto p-6 block">
+      <div class="bg-black p-10 custom-text-color">
+        <h2
+          class="personalized-product font-semibold text-center custom-text-color"
+        >
+          <span class="text-white">Personalised products that adds a </span>
+          <span class="text-multicolor">joyful touch</span>
+        </h2>
+        <p class="coming-soon text-center">Coming Soon</p>
+        <p class="email-text mb-4">Are You Ready?</p>
+        <form class="flex flex-col items-center" id="emailFeedbackForm">
+          <input
+            id="email-notify"
+            type="email"
+            placeholder="Enter your email"
+            required
+            class="border border-gray-400 p-3 rounded-md w-full sm:w-1/2"
+          />
           <button
-            style="margin: 20px 20px 20px 0px"
+            id="notify-me"
             type="submit"
-            class="submit-button"
+            class="bg-[rgba(206,236,151,1)] border border-custom-text-color text-black mt-4 p-3 rounded-md w-full sm:w-1/2 mx-auto flex justify-center items-center custom-text-color"
           >
-            Submit
+            <span id="buttonText-notify">NOTIFY ME</span>
+            <svg
+              id="loader-notify"
+              class="hidden animate-spin ml-2 h-5 w-5 text-black"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <circle
+                class="opacity-25"
+                cx="12"
+                cy="12"
+                r="10"
+                stroke="currentColor"
+                stroke-width="4"
+              ></circle>
+              <path
+                class="opacity-75"
+                fill="currentColor"
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+              ></path>
+            </svg>
           </button>
-
-          <p id="error-message"></p>
-          <div id="successMessage"></div>
         </form>
       </div>
+    </section>
+
+    <section id="formSection" class="container mx-auto mt-10 p-6 hidden">
+      <h1 class="text-3xl font-bold text-center mb-4 custom-text-color">
+        We'd love your feedback!
+      </h1>
+      <form
+        id="feedbackForm"
+        method="post"
+        class="bg-black p-8 rounded-lg shadow-md border border-gray-600 max-w-2xl mx-auto"
+      >
+        <!-- First Question: Interest in purchasing -->
+        <div class="mb-6">
+          <label class="block text-lg font-semibold mb-4 custom-text-color">
+            How interested are you in purchasing a personalized book/notecards?
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="interest"
+                value="very-interested"
+                class="form-radio h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Very interested</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="interest"
+                value="somewhat-interested"
+                class="form-radio h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Somewhat interested</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="interest"
+                value="neutral"
+                class="form-radio h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Neutral</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="interest"
+                value="not-very-interested"
+                class="form-radio h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Not very interested</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="radio"
+                name="interest"
+                value="not-interested"
+                class="form-radio h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Not interested at all</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- New Multi-Select Question -->
+        <div class="mb-6">
+          <label class="block text-lg font-semibold mb-4 custom-text-color">
+            Which elements of a personalized children's book do you find most
+            appealing?
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="appeal"
+                value="child-name"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"
+                >The Child's name incorporated into the story</span
+              >
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="appeal"
+                value="personalized-illustrations"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"
+                >Personalized illustrations featuring the child</span
+              >
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="appeal"
+                value="educational-content"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"
+                >Educational content tailored to the child's learning
+                level</span
+              >
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="appeal"
+                value="custom-storylines"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"
+                >Custom storylines based on the child's interests</span
+              >
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="appeal"
+                value="interactive-elements"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"
+                >Interactive elements (e.g., activities, puzzles)</span
+              >
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-lg font-semibold mb-4 custom-text-color">
+            What themes or topics would you be most interested in for a
+            personalized children's book?
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="personalised"
+                value="Adventure"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Adventure</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="personalised"
+                value="Fantasy/Fairy tales"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"> Fantasy/Fairy tales</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="personalised"
+                value="educational-content"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Learning/Educational</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="personalised"
+                value="Family and friendship"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"> Family and friendship</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="personalised"
+                value="Sports"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Sports</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="personalised"
+                value="Animals"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Animals</span>
+            </label>
+
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="personalised"
+                value="Superheroes"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Superheroes</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-lg font-semibold mb-4 custom-text-color">
+            What factors would influence your decision to purchase a
+            personalized/customized book?
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="customized"
+                value="Price"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Price</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="customized"
+                value="Customization options available"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"> Customization options available</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="customized"
+                value="Quality of the book"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Quality of the book</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="customized"
+                value="Delivery time"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Delivery time</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="customized"
+                value="Customer reviews"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"> Customer reviews</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="customized"
+                value="Ease of ordering"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Ease of ordering</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="block text-lg font-semibold mb-4 custom-text-color">
+            What occasions would you purchase personalized/customized children's
+            notecards for?
+          </label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="notecard"
+                value="Birthday parties"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white">Birthday parties</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="notecard"
+                value="Thank you notes"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"> Thank you notes</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="notecard"
+                value="Holiday cards"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"> Holiday cards</span>
+            </label>
+            <label class="flex items-center space-x-2">
+              <input
+                type="checkbox"
+                name="notecard"
+                value="School events"
+                class="form-checkbox h-4 w-4 text-green-500"
+              />
+              <span class="text-white"> School Events</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <!-- <label
+            for="email"
+            class="block text-lg font-semibold mb-2 custom-text-color"
+          >
+            Email
+          </label> -->
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="Enter Your Email"
+            required
+            class="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        </div>
+        <!-- Submit Button -->
+        <button
+          type="submit"
+          id="submitButton"
+          class="bg-[rgba(206,236,151,1)] border border-custom-text-color text-black mt-4 p-3 rounded-md w-full sm:w-1/2 mx-auto flex justify-center items-center custom-text-color"
+        >
+          <span id="buttonText">Submit Feedback</span>
+          <svg
+            id="loader"
+            class="hidden animate-spin ml-2 h-5 w-5 text-black"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+            ></path>
+          </svg>
+        </button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <div class="arrow-button" id="arrowButton" onclick="scrollToForm()">
+      <div class="arrow-icon"></div>
     </div>
-    <script src="./script/scripts.js"></script>
+
+    <div id="toast-container" class="fixed bottom-4 right-4 space-y-4"></div>
+
+    <script>
+      function showToast(message, type) {
+        const toastContainer = document.getElementById("toast-container");
+        const toast = document.createElement("div");
+        toast.classList.add(
+          "p-4",
+          "rounded-lg",
+          "shadow-lg",
+          "text-white",
+          "w-full", // Make it take full width for small screens
+          "max-w-xs", // Limit max width
+          "md:max-w-sm", // Increase max-width on medium screens
+          "lg:max-w-md", // Increase max-width further on larger screens
+          "break-words" // Allow long text to break and wrap properly
+        );
+
+        if (type === "success") {
+          toast.classList.add("bg-green-500");
+        } else if (type === "error") {
+          toast.classList.add("bg-red-500");
+        }
+
+        toast.textContent = message;
+        toastContainer.appendChild(toast);
+
+        setTimeout(() => {
+          toast.remove();
+        }, 3000);
+      }
+
+      function scrollToForm() {
+        document.getElementById("formSection").classList.remove("hidden");
+        document
+          .getElementById("formSection")
+          .scrollIntoView({ behavior: "smooth" });
+        // document.getElementById("arrowButton").style.display = "none";
+      }
+
+      window.addEventListener("load", () => {
+        if (
+          document.getElementById("emailSection").classList.contains("block")
+        ) {
+          document.getElementById("arrowButton").style.display = "flex";
+        }
+      });
+      const apiUrl = "https://api.colourchalk.com/api/v0/survey";
+
+      const form = document.getElementById("feedbackForm");
+      const emailFeedbackForm = document.getElementById("emailFeedbackForm");
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const email = document.getElementById("email").value;
+        const submitButton = document.getElementById("submitButton");
+        const loader = document.getElementById("loader");
+        const buttonText = document.getElementById("buttonText");
+
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+          showToast("Enter Valid Email", "error");
+          return;
+        }
+
+        submitButton.disabled = true;
+        loader.classList.remove("hidden");
+        // buttonText.textContent = "Submitting...";
+
+        let questionSecond = form.querySelectorAll(
+          'input[name="appeal"]:checked'
+        );
+        let questionThird = form.querySelectorAll(
+          'input[name="personalised"]:checked'
+        );
+        let questionFourth = form.querySelectorAll(
+          'input[name="customized"]:checked'
+        );
+        let questionFifth = form.querySelectorAll(
+          'input[name="notecard"]:checked'
+        );
+        questionSecond = Array.from(questionSecond)
+          .map((el) => el.value)
+          .join(",");
+        questionThird = Array.from(questionThird)
+          .map((el) => el.value)
+          .join(",");
+        questionFourth = Array.from(questionFourth)
+          .map((el) => el.value)
+          .join(",");
+        questionFifth = Array.from(questionFifth)
+          .map((el) => el.value)
+          .join(",");
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify({
+            email: email,
+            responseData: {
+              question1: form["interest"]["value"],
+              question2: questionSecond,
+              question3: questionThird,
+              question4: questionFourth,
+              question5: questionFifth,
+            },
+          }),
+        };
+
+        // Call the API using fetch
+        fetch(apiUrl, options)
+          .then((data) => {
+            console.log(data);
+            showToast("Feedback submitted successfully!", "success");
+            this.reset();
+            // this.emailCopyField.value = "";
+            // successMessage.textContent =
+            //   "  Your response has been submitted successfully!";
+          })
+          .catch((error) => {
+            showToast("An error occurred. Please try again.", "error");
+          })
+          .finally(() => {
+            // Hide loader, re-enable button and reset text
+            submitButton.disabled = false;
+            loader.classList.add("hidden");
+            buttonText.textContent = "Submit Feedback";
+          });
+      });
+
+      emailFeedbackForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const email = document.getElementById("email-notify").value;
+        const submitButton = document.getElementById("notify-me");
+        const loader = document.getElementById("loader-notify");
+        const buttonText = document.getElementById("buttonText-notify");
+
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+          showToast("Enter Valid Email", "error");
+          return;
+        }
+
+        submitButton.disabled = true;
+        loader.classList.remove("hidden");
+        // buttonText.textContent = "Notifying...";
+
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+
+          body: JSON.stringify({
+            email: email,
+            responseData: {
+              question1: form["interest"]["value"],
+              question2: "",
+              question3: "",
+              question4: "",
+              question5: "",
+            },
+          }),
+        };
+
+        // Call the API using fetch
+        fetch(apiUrl, options)
+          .then((data) => {
+            console.log(data);
+            showToast("Email submitted successfully!", "success");
+            this.reset();
+          })
+          .catch((error) => {
+            showToast("An error occurred. Please try again.", "error");
+          })
+          .finally(() => {
+            // Hide loader, re-enable button and reset text
+            submitButton.disabled = false;
+            loader.classList.add("hidden");
+            buttonText.textContent = "NOTIFY ME";
+          });
+      });
+
+      const emailField = document.getElementById("email");
+      const emailCopyField = document.getElementById("email-notify");
+
+      emailField.addEventListener("input", function () {
+        emailCopyField.value = this.value;
+      });
+
+      emailCopyField.addEventListener("input", function () {
+        emailField.value = this.value;
+      });
+
+      emailField.addEventListener("input", function () {
+        if (this.value === "") {
+          emailCopyField.value = "";
+        }
+      });
+
+      emailCopyField.addEventListener("input", function () {
+        if (this.value === "") {
+          emailField.value = "";
+        }
+      });
+    </script>
   </body>
 </html>
