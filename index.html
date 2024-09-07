@@ -120,6 +120,34 @@
           font-size: 1.5rem;
         }
       }
+
+      .text-animate {
+        font-weight: bold;
+        /* font-size: 1.5rem; */
+        background-image: linear-gradient(
+          45deg,
+          #ff0000,
+          #00ff00,
+          #0000ff,
+          #ffff00,
+          #ff00ff,
+          #00ffff
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        animation: fade-in-out 1s ease-in-out infinite;
+      }
+
+      @keyframes fade-in-out {
+        0%,
+        100% {
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
     </style>
   </head>
   <body class="bg-black">
@@ -150,7 +178,7 @@
           class="personalized-product font-semibold text-center custom-text-color"
         >
           <span class="text-white">Personalised products that adds a </span>
-          <span class="text-multicolor">joyful touch</span>
+          <span class="text-animate" id="changingText">joyful touch</span>
         </h2>
         <p class="coming-soon text-center">Coming Soon</p>
         <p class="email-text mb-4">Are You Ready?</p>
@@ -767,6 +795,22 @@
           emailField.value = "";
         }
       });
+
+      const textArray = [
+        "joyful touch",
+        "creative designs",
+        "lasting memories",
+        "unique experiences",
+      ];
+      let currentIndex = 0;
+      const changingText = document.getElementById("changingText");
+
+      function rotateText() {
+        currentIndex = (currentIndex + 1) % textArray.length;
+        changingText.textContent = textArray[currentIndex];
+      }
+
+      setInterval(rotateText, 1000); // Change text every 1 second
     </script>
   </body>
 </html>
